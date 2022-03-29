@@ -4,15 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class victoryScript : MonoBehaviour
 {
-
+    public bool isplayer1;
     public Transform groundCheck;
     public LayerMask finishLayer;
-    // Start is called before the first frame update
+    public levelStateScript levelstate; 
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (Physics2D.OverlapCircle(groundCheck.position, 0.35f, finishLayer))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); ;
+        {
+            if(isplayer1)
+                levelstate.waterHasCompletedLevel = true;
+            else
+                levelstate.fireHasCompletedLevel = true;
+        }
     }
 }

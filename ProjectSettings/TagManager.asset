@@ -11,19 +11,19 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Walls
   - Ground
-  - 
+  - 'Movable '
   - Traps
-  - Finish
+  - FinishFire
+  - FinishWater
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - FirePlayer
+  - WaterPlayer
   - 
   - 
   - 

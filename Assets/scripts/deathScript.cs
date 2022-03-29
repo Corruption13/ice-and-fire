@@ -4,18 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class deathScript : MonoBehaviour
 {
-    public Transform groundCheck;
     public LayerMask trapLayer;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public float hitboxSize = 0.35f;
     void Update()
     {
-        if (Physics2D.OverlapCircle(groundCheck.position, 0.35f, trapLayer))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); ;
+        if (Physics2D.OverlapCircle(transform.position, hitboxSize, trapLayer))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 }
