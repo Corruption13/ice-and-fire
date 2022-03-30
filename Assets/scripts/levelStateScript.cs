@@ -4,17 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class levelStateScript : MonoBehaviour
 {
-    public float victory_delay = 2;
+
+    public GameObject firePlayer;
+    public GameObject iceplayer;
+    public float victory_delay = 1f;
     public float death_delay = 0.5f;
     public bool fireHasCompletedLevel = false;
-    public bool waterHasCompletedLevel = false; 
+    public bool iceHasCompletedLevel = false; 
     public bool bothAlive = true;
 
     public int fireGemsTotal;
-    public int waterGemsTotal;
+    public int iceGemsTotal;
 
     private int fireGemsCollected = 0;
-    private int waterGemsCollected = 0;
+    private int iceGemsCollected = 0;
 
     void Update()
     {
@@ -26,7 +29,7 @@ public class levelStateScript : MonoBehaviour
         if(!bothAlive)
             StartCoroutine( DeathSteps() );
 
-        if (fireHasCompletedLevel && waterHasCompletedLevel)
+        if (fireHasCompletedLevel && iceHasCompletedLevel)
             StartCoroutine( EndGameSteps() );
         
     }
@@ -35,9 +38,9 @@ public class levelStateScript : MonoBehaviour
 
         PlayerPrefs.SetInt("score1", fireGemsCollected);
         PlayerPrefs.SetInt("total1", fireGemsTotal);
-        PlayerPrefs.SetInt("score2", waterGemsCollected);
-        PlayerPrefs.SetInt("total2", waterGemsTotal);
-        PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name); 
+        PlayerPrefs.SetInt("score2", iceGemsCollected);
+        PlayerPrefs.SetInt("total2", iceGemsTotal);
+        PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
 
         yield return new WaitForSeconds(victory_delay);
         Debug.Log("ByeBye");
@@ -49,12 +52,14 @@ public class levelStateScript : MonoBehaviour
 
         PlayerPrefs.SetInt("score1", fireGemsCollected);
         PlayerPrefs.SetInt("total1", fireGemsTotal);
-        PlayerPrefs.SetInt("score2", waterGemsCollected);
-        PlayerPrefs.SetInt("total2", waterGemsTotal);
-        PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetInt("score2", iceGemsCollected);
+        PlayerPrefs.SetInt("total2", iceGemsTotal);
 
+
+        Time.timeScale = 0.7f;
+        Debug.Log("You Died.");
         yield return new WaitForSeconds(death_delay);
-        Debug.Log("Prepare to Die.");
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -63,8 +68,8 @@ public class levelStateScript : MonoBehaviour
     {
         PlayerPrefs.SetInt("score1", fireGemsCollected);
         PlayerPrefs.SetInt("total1", fireGemsTotal);
-        PlayerPrefs.SetInt("score2", waterGemsCollected);
-        PlayerPrefs.SetInt("total2", waterGemsTotal);
+        PlayerPrefs.SetInt("score2", iceGemsCollected);
+        PlayerPrefs.SetInt("total2", iceGemsTotal);
         PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
     }
 }

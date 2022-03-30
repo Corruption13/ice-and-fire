@@ -11,10 +11,10 @@ public class victoryScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Physics2D.OverlapCircle(groundCheck.position, 0.35f, finishLayer))
+        if (Physics2D.OverlapCircle(groundCheck.position, 0.5f, finishLayer))
         {
             if(isplayer1)
-                levelstate.waterHasCompletedLevel = true;
+                levelstate.iceHasCompletedLevel = true;
             else
                 levelstate.fireHasCompletedLevel = true;
         }
