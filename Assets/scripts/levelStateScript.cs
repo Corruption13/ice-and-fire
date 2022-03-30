@@ -18,7 +18,7 @@ public class levelStateScript : MonoBehaviour
 
     public int fireGemsTotal;
     public int iceGemsTotal;
-    public int acidGemTotal;
+    public int acidGemsTotal;
 
     private int fireGemsCollected = 0;
     private int iceGemsCollected = 0;
@@ -43,26 +43,15 @@ public class levelStateScript : MonoBehaviour
 
     IEnumerator EndGameSteps() {
 
-        PlayerPrefs.SetInt("score1", fireGemsCollected);
-        PlayerPrefs.SetInt("total1", fireGemsTotal);
-        PlayerPrefs.SetInt("score2", iceGemsCollected);
-        PlayerPrefs.SetInt("total2", iceGemsTotal);
-        PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
 
+        SetFinalScore(); 
         yield return new WaitForSeconds(victory_delay);
-        Debug.Log("ByeBye");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Debug.Log("You Win!");
+        SceneManager.LoadScene("level_completed");
     }
 
     IEnumerator DeathSteps()
     {
-
-        PlayerPrefs.SetInt("score1", fireGemsCollected);
-        PlayerPrefs.SetInt("total1", fireGemsTotal);
-        PlayerPrefs.SetInt("score2", iceGemsCollected);
-        PlayerPrefs.SetInt("total2", iceGemsTotal);
-
-
         Time.timeScale = 0.7f;
         Debug.Log("You Died.");
         yield return new WaitForSeconds(death_delay);
@@ -77,6 +66,8 @@ public class levelStateScript : MonoBehaviour
         PlayerPrefs.SetInt("total1", fireGemsTotal);
         PlayerPrefs.SetInt("score2", iceGemsCollected);
         PlayerPrefs.SetInt("total2", iceGemsTotal);
+        PlayerPrefs.SetInt("score3", acidGemsCollected);
+        PlayerPrefs.SetInt("total3", acidGemsTotal);
         PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
     }
 
