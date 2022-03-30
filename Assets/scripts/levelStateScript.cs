@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class levelStateScript : MonoBehaviour
 {
+
+    public Text score; 
 
     public GameObject firePlayer;
     public GameObject iceplayer;
@@ -15,9 +18,13 @@ public class levelStateScript : MonoBehaviour
 
     public int fireGemsTotal;
     public int iceGemsTotal;
+    public int acidGemTotal;
 
     private int fireGemsCollected = 0;
     private int iceGemsCollected = 0;
+    private int acidGemsCollected = 0;
+
+
 
     void Update()
     {
@@ -72,4 +79,31 @@ public class levelStateScript : MonoBehaviour
         PlayerPrefs.SetInt("total2", iceGemsTotal);
         PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
     }
+
+    public void CollectGem(bool isIce)
+    {
+        if (isIce)
+        {
+            fireGemsCollected++; 
+        }
+        else
+        {
+            iceGemsCollected++;
+        }
+        UpdateScoreUI();
+    }
+
+    public void CollectSpecialGem()
+    {
+        acidGemsCollected++;
+        UpdateScoreUI();
+    }
+
+    void UpdateScoreUI()
+    {
+        score.text = fireGemsCollected.ToString() + "     " 
+                    + iceGemsCollected.ToString() + "     " 
+                    + acidGemsCollected.ToString();
+    }
+
 }

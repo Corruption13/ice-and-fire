@@ -9,6 +9,9 @@ TagManager:
   - FirePit
   - AcidPit
   - IcePit
+  - IceGem
+  - FireGem
+  - AcidGem
   layers:
   - Default
   - TransparentFX
