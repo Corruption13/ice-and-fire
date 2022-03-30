@@ -34,7 +34,10 @@ public class playerScript : MonoBehaviour
 
     private void Update()
     {
-        GetInput(); 
+        GetInput();
+        AnimatePlayer();
+        RotatePlayer();
+        RightSideUpPlayer();
         
     }
 
@@ -42,8 +45,6 @@ public class playerScript : MonoBehaviour
     {
         MovePlayer();
         JumpPlayer();
-        AnimatePlayer();
-        RotatePlayer();
     }
 
 
@@ -62,7 +63,7 @@ public class playerScript : MonoBehaviour
     void JumpPlayer()
     {
         
-        if (!isGrounded) isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.35f, groundlayer);
+        if (!isGrounded) isGrounded = Physics2D.OverlapCircle(groundCheck.position, collisionDetectorRadius, groundlayer);
         if (v != 0 && isGrounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpforce, 0);
@@ -79,6 +80,14 @@ public class playerScript : MonoBehaviour
         else if (h>0)
         {
             transform.localScale = new Vector3(2, 2, 1);
+        }
+    }
+
+    void RightSideUpPlayer()
+    {
+        if(rb.velocity.y < 0.1f && rb.velocity.x < 0.5f)
+        {
+            transform.localRotation = Quaternion.identity;
         }
     }
 

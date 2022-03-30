@@ -6,6 +6,9 @@ TagManager:
   tags:
   - IcePlayer
   - FirePlayer
+  - FirePit
+  - AcidPit
+  - IcePit
   layers:
   - Default
   - TransparentFX

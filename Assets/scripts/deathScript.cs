@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class deathScript : MonoBehaviour
 {
-    public LayerMask trapLayer;
-    public float hitboxSize = 0.35f;
+    //public LayerMask trapLayer;
+    public string trap1tag;
+    public string trap2tag = "AcidPit";
     public levelStateScript levelstate;
-    void Update()
+    void OnCollisionEnter2D(Collision2D col)
     {
-        if (Physics2D.OverlapCircle(transform.position, hitboxSize, trapLayer))
+        if (col.gameObject.tag == trap1tag || col.gameObject.tag == trap2tag)
+        {
+            Destroy(gameObject);
             levelstate.bothAlive = false;
+        }
     }
 }
