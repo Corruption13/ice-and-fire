@@ -6,9 +6,10 @@ public class deathScript : MonoBehaviour
 {
     public LayerMask trapLayer;
     public float hitboxSize = 0.35f;
+    public levelStateScript levelstate;
     void Update()
     {
         if (Physics2D.OverlapCircle(transform.position, hitboxSize, trapLayer))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+            levelstate.bothAlive = false;
     }
 }

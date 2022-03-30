@@ -34,31 +34,34 @@ public class playerScript : MonoBehaviour
 
     private void Update()
     {
-        MovePlayer();
-        JumpPlayer();
+        GetInput(); 
+        
     }
 
     void FixedUpdate()
     {
-        AnimatePlayer();  
+        MovePlayer();
+        JumpPlayer();
+        AnimatePlayer();
+        RotatePlayer();
+    }
+
+
+    void GetInput()
+    {
+        v = Input.GetKey(jumpkey) ? 1 : 0;
+        h = Input.GetKey(rightkey) ? 1 : Input.GetKey(leftkey) ? -1 : 0;
     }
 
     void MovePlayer()
     {
-        h = 0;
-        v = 0;
+        rb.velocity = new Vector2(h * Time.deltaTime * speed, rb.velocity.y);
         
-        h = Input.GetKey(rightkey) ? 1 : h;
-        h = Input.GetKey(leftkey) ? -1 : h;
-        
-        rb.velocity = new Vector3(h * Time.deltaTime * speed, rb.velocity.y, 0);
-        RotatePlayer();
-
     }
 
     void JumpPlayer()
     {
-        v = Input.GetKey(jumpkey) ? 1 : v;
+        
         if (!isGrounded) isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.35f, groundlayer);
         if (v != 0 && isGrounded)
         {
@@ -87,18 +90,7 @@ public class playerScript : MonoBehaviour
             animator.SetBool("moving", false);
     }
 
-    void clampPlayerMovement()
-    {
-        Vector3 position = transform.position;
 
-        float distance = transform.position.z - Camera.main.transform.position.z;
-
-        float leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distance)).x + halfPlayerSizeX;
-        float rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distance)).x - halfPlayerSizeX;
-
-        position.x = Mathf.Clamp(position.x, leftBorder, rightBorder);
-        transform.position = position;
-    }
 
 
 }
