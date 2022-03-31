@@ -8,18 +8,22 @@ public class collectGemScript : MonoBehaviour
     public string gem1Tag;
     public string gem2Tag = "AcidGem";
     public levelStateScript levelstate;
+    public playAudioScript sfxAudioSource; 
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == gem1Tag)
         {
             Destroy(col.gameObject); 
             levelstate.CollectGem(this.gameObject.tag == "IcePlayer");
+            sfxAudioSource.PlayAudio(1);
             // if argument true, increments ice score, else fire score.
         }
         else if(col.gameObject.tag == gem2Tag)
         {
             Destroy(col.gameObject);
-            levelstate.CollectSpecialGem(); 
+            levelstate.CollectSpecialGem();
+            sfxAudioSource.PlayAudio(0);
         }
     }
 }

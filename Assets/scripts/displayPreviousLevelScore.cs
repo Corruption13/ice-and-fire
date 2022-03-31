@@ -10,13 +10,19 @@ public class displayPreviousLevelScore : MonoBehaviour
     public Text icegems;
     public Text acidgems;
     public Text level_no;
+    public Text grade;
+    public Text timer; 
  
     void Start()
     {
         firegems.text = PlayerPrefs.GetInt("score1").ToString() + "/" + PlayerPrefs.GetInt("total1").ToString();
         icegems.text = PlayerPrefs.GetInt("score2").ToString() + "/" + PlayerPrefs.GetInt("total2").ToString();
         acidgems.text = PlayerPrefs.GetInt("score3").ToString() + "/" + PlayerPrefs.GetInt("total3").ToString();
-        level_no.text = "Completed Level " + PlayerPrefs.GetString("completed_level"); 
+        level_no.text = "Completed Level " + PlayerPrefs.GetString("completed_level");
+        grade.text = PlayerPrefs.GetString("grade");
+        timer.text = "Time: "+ PlayerPrefs.GetFloat("time_passed").ToString("0.00");
+
+
     }
 
     /*

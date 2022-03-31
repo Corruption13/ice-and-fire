@@ -6,7 +6,13 @@ using UnityEngine.UI;
 public class levelStateScript : MonoBehaviour
 {
 
-    public Text score; 
+    public Text score;
+    public Text timer;
+    public Text levelInfo;
+
+    public float best_time_for_level = 30f;
+    public float average_time_for_level = 60f;
+    private float time_passed = 0f;
 
     public GameObject firePlayer;
     public GameObject iceplayer;
@@ -16,15 +22,34 @@ public class levelStateScript : MonoBehaviour
     public bool iceHasCompletedLevel = false; 
     public bool bothAlive = true;
 
-    public int fireGemsTotal;
-    public int iceGemsTotal;
-    public int acidGemsTotal;
+    public int fireGemsTotal = 1;
+    public int iceGemsTotal = 1;
+    public int acidGemsTotal = 1;
 
     private int fireGemsCollected = 0;
     private int iceGemsCollected = 0;
     private int acidGemsCollected = 0;
 
+    public playAudioScript sfxAudioSource;
 
+
+    private void Start()
+    {
+        levelInfo.text = "Os Time: " + best_time_for_level + "s\nA+ Time: " + average_time_for_level + "s";
+    }
+
+    private void LateUpdate()
+    {
+        time_passed += Time.deltaTime;
+        UpdateTimerUI(); 
+
+
+    }
+
+    void UpdateTimerUI()
+    {
+        timer.text = time_passed.ToString("0.00");
+    }
 
     void Update()
     {
@@ -44,9 +69,10 @@ public class levelStateScript : MonoBehaviour
     IEnumerator EndGameSteps() {
 
 
-        SetFinalScore(); 
-        yield return new WaitForSeconds(victory_delay);
+        SetFinalScore();
+        sfxAudioSource.PlayAudio(13);
         Debug.Log("You Win!");
+        yield return new WaitForSeconds(victory_delay);
         SceneManager.LoadScene("level_completed");
     }
 
@@ -54,6 +80,7 @@ public class levelStateScript : MonoBehaviour
     {
         Time.timeScale = 0.7f;
         Debug.Log("You Died.");
+        sfxAudioSource.PlayAudio(12);
         yield return new WaitForSeconds(death_delay);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -69,6 +96,22 @@ public class levelStateScript : MonoBehaviour
         PlayerPrefs.SetInt("score3", acidGemsCollected);
         PlayerPrefs.SetInt("total3", acidGemsTotal);
         PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetFloat("time_passed", time_passed - victory_delay);
+        PlayerPrefs.SetString("grade", CalculateGrade());
+    }
+
+    string CalculateGrade()
+    {
+        string[] grade = {"O", "A+", "A", "B+", "B", "C+", "C", "D", "F"};
+        float score = 0;
+        score += 2*fireGemsCollected / fireGemsTotal + 2*iceGemsCollected/iceGemsTotal + 2*acidGemsCollected/ acidGemsTotal;
+
+        if (time_passed < best_time_for_level) score += 2;
+        if (time_passed < average_time_for_level) score += 1;
+
+        if(score >= 0 && score <=8 )
+            return grade[8 - (int)score];
+        return "Invalid Grade"; 
     }
 
     public void CollectGem(bool isIce)
