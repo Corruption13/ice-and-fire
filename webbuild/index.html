@@ -58,9 +58,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/webbuild.loader.js";
       var config = {
-        dataUrl: buildUrl + "/webbuild.data",
-        frameworkUrl: buildUrl + "/webbuild.framework.js",
-        codeUrl: buildUrl + "/webbuild.wasm",
+        dataUrl: buildUrl + "/webbuild.data.br",
+        frameworkUrl: buildUrl + "/webbuild.framework.js.br",
+        codeUrl: buildUrl + "/webbuild.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Ice and Fire 1",
@@ -76,15 +76,29 @@
       // config.matchWebGLToCanvasSize = false;
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        // Mobile device style: fill the whole browser client area with the game canvas:
+
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
         container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
+
+        // To lower canvas resolution on mobile devices to gain some
+        // performance, uncomment the following line:
+        // config.devicePixelRatio = 1;
+
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+
         unityShowBanner('WebGL builds are not supported on mobile devices.');
       } else {
+        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
         canvas.style.width = "960px";
         canvas.style.height = "600px";
       }
+
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
