@@ -36,6 +36,7 @@ public class levelStateScript : MonoBehaviour
     private void Start()
     {
         levelInfo.text = "Os Time: " + best_time_for_level + "s\nA+ Time: " + average_time_for_level + "s";
+        PlayerPrefs.SetString("current_level", SceneManager.GetActiveScene().name);
     }
 
     private void LateUpdate()

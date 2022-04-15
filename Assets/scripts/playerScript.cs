@@ -19,6 +19,7 @@ public class playerScript : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundlayer;
+    public LayerMask MovableLayer; 
    
 
     private float h = 0;
@@ -56,7 +57,15 @@ public class playerScript : MonoBehaviour
 
     void MovePlayer()
     {
-        rb.velocity = new Vector2(h * Time.deltaTime * speed, rb.velocity.y);
+        if(h != 0)
+            rb.velocity = new Vector2(h * Time.deltaTime * speed, rb.velocity.y);
+        if(h == 0)
+        {
+            if (!Physics2D.OverlapCircle(groundCheck.position, collisionDetectorRadius, MovableLayer))
+            {
+                rb.velocity = new Vector2(h * Time.deltaTime * speed, rb.velocity.y);
+            }
+        }
         
     }
 

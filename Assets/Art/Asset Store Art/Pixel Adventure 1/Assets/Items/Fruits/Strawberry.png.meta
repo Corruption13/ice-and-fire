@@ -75,6 +75,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -508,6 +509,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Strawberry_16: 1433410794814771726
+      Strawberry_11: 9150055279739663228
+      Strawberry_13: 6850229642150134582
+      Strawberry_4: 901954246582174200
+      Strawberry_9: 7853139244501102106
+      Strawberry_5: 825325050284003712
+      Strawberry_7: 2009151386410624793
+      Strawberry_0: 1775669009216684005
+      Strawberry_8: -8828998067812341462
+      Strawberry_10: 7386868840556686860
+      Strawberry_1: -32040429760078815
+      Strawberry_2: -7106730570939000684
+      Strawberry_3: 4518513080991243510
+      Strawberry_14: -7542899124980697566
+      Strawberry_15: -8532893379546982827
+      Strawberry_6: -5158240598457465908
+      Strawberry_12: 8026213463552293463
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

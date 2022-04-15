@@ -12,6 +12,7 @@ TagManager:
   - IceGem
   - FireGem
   - AcidGem
+  - Button
   layers:
   - Default
   - TransparentFX

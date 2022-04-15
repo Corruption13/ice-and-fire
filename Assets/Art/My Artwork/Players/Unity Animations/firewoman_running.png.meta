@@ -78,6 +78,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -355,6 +356,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      firewoman_running_2: 5330734966832564447
+      firewoman_running_4: -1477349624360409533
+      firewoman_running_5: -7360893389342986666
+      firewoman_running_8: -1686501846599929585
+      firewoman_running_7: 6197831778028773660
+      firewoman_running_0: 5871567903537047283
+      firewoman_running_3: -7633019465965713941
+      firewoman_running_1: 7385603061496018403
+      firewoman_running_6: -7225235145598470603
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

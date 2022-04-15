@@ -99,6 +99,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -712,6 +713,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      New Piskel (5)_13: -4341166144414226772
+      New Piskel (5)_19: 5039070119533827347
+      New Piskel (5)_2: 6729572152601682
+      New Piskel (5)_3: -4626572278127738360
+      New Piskel (5)_20: 8726846954838242209
+      New Piskel (5)_18: -26878067363253810
+      New Piskel (5)_4: -258414757459904609
+      New Piskel (5)_8: -6881984799924083729
+      New Piskel (5)_11: 1521669485875166541
+      New Piskel (5)_23: 5321046951818814456
+      New Piskel (5)_9: -4425688742497725741
+      New Piskel (5)_12: -2841340256397059850
+      New Piskel (5)_16: 9011600697526933581
+      New Piskel (5)_21: -5276937509302594864
+      New Piskel (5)_24: 455976057287237568
+      New Piskel (5)_22: -4065075543742937387
+      New Piskel (5)_7: 3454307460556738731
+      New Piskel (5)_10: 2659185774370678580
+      New Piskel (5)_17: 8720346798883997232
+      New Piskel (5)_6: 2296311037455575914
+      New Piskel (5)_1: -4335991441621654067
+      New Piskel (5)_0: 5435608014139152121
+      New Piskel (5)_5: -8451753915077823089
+      New Piskel (5)_14: -4619646865577333763
+      New Piskel (5)_15: -9076526368395856726
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
