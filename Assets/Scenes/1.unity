@@ -524,7 +524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162854708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.39, y: -10.79, z: -10}
+  m_LocalPosition: {x: 4.95, y: 3.47, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -548,7 +548,7 @@ MonoBehaviour:
   player2: {fileID: 1675984333}
   cameraYOffset: 2
   shouldFollowPlayer: 1
-  minOrthographicSize: 5
+  minOrthographicSize: 6
   maxOrthographicSize: 12
   sensetivity: 0.2
 --- !u!4 &176352497 stripped
@@ -1486,118 +1486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: iceGemsTotal
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: acidGemsTotal
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: fireGemsTotal
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: best_time_for_level
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: average_time_for_level
-      value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728176, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728176, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 66.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728178, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728178, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4a59f64e4a6f3e547b7d565a143d315c, type: 2}
-    - target: {fileID: 4805737053962728178, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LinearDrag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728178, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728182, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: jumpforce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737053962728182, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: MovableLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054202576228, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0e3b57fe9497c4a4cb25a0414d430a2c, type: 3}
-    - target: {fileID: 4805737054202576231, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 16.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054202576231, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 128.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860240, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: jumpforce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860240, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: MovableLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860241, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -29.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860241, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 66.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860242, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860242, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4a59f64e4a6f3e547b7d565a143d315c, type: 2}
-    - target: {fileID: 4805737054290860242, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_LinearDrag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054290860242, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054828794372, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 86.0958
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054828794372, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 39.3472
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054828794372, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 338
-      objectReference: {fileID: 0}
-    - target: {fileID: 4805737054828794372, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -647.2074
-      objectReference: {fileID: 0}
     - target: {fileID: 4805737054975589314, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
       propertyPath: m_RootOrder
       value: 1
