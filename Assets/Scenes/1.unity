@@ -1486,6 +1486,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
+      propertyPath: iceGemsTotal
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 222367616, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
+      propertyPath: fireGemsTotal
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737054202576228, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e3b57fe9497c4a4cb25a0414d430a2c, type: 3}
     - target: {fileID: 4805737054975589314, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
       propertyPath: m_RootOrder
       value: 1
