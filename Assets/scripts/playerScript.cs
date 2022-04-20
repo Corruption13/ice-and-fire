@@ -6,36 +6,48 @@ using UnityEngine;
 public class playerScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    [Header("Keyboard Controls")]
     public KeyCode leftkey;
     public KeyCode rightkey;
     public KeyCode jumpkey;
-    public KeyCode interactkey; 
+    public KeyCode interactkey;
+    private bool isUsingTouchInput = false;
 
 
+    [Header("Character Movement Stats")]
     public int speed = 10;
     public float jumpforce = 1000;
     public float collisionDetectorRadius = 0.35f;
-    public Animator animator;
-    public Rigidbody2D rb;
-    public Transform groundCheck;
+    public float bottomOffset = 0.004f; 
+
+
+    private Animator animator;
+    private Rigidbody2D rb;
+
+
+    [Header("JumpLayer")]
     public LayerMask groundlayer;
-    public LayerMask MovableLayer; 
-   
+    public LayerMask MovableLayer;
+    public LayerMask OtherPlayerLayer;
 
-    private float h = 0;
-    private float v = 0;
-    private float halfPlayerSizeX; 
-    bool isGrounded = true;
+    private int h = 0;
+    private int v = 0;
+    private bool isGrounded;
 
 
-    void Start()
+    private void Start()
     {
-        halfPlayerSizeX = GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        isGrounded = true;
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        GetInput();
+        if (!isUsingTouchInput)
+        {
+            GetInput();
+        }
         AnimatePlayer();
         RotatePlayer();
         RightSideUpPlayer();
@@ -44,8 +56,10 @@ public class playerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
-        JumpPlayer();
+       
+        MovePlayerHorizontal(h);
+        if(v!=0)
+            JumpPlayer(v);
     }
 
 
@@ -55,29 +69,51 @@ public class playerScript : MonoBehaviour
         h = Input.GetKey(rightkey) ? 1 : Input.GetKey(leftkey) ? -1 : 0;
     }
 
-    void MovePlayer()
+    void MovePlayerHorizontal(int horizontal)
     {
-        if(h != 0)
-            rb.velocity = new Vector2(h * Time.deltaTime * speed, rb.velocity.y);
-        if(h == 0)
+        if(horizontal != 0)
+            rb.velocity = new Vector2(horizontal * Time.deltaTime * speed, rb.velocity.y);
+        if(horizontal == 0)
         {
-            if (!Physics2D.OverlapCircle(groundCheck.position, collisionDetectorRadius, MovableLayer))
+            if (!Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, MovableLayer))
             {
-                rb.velocity = new Vector2(h * Time.deltaTime * speed, rb.velocity.y);
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
         
     }
 
-    void JumpPlayer()
+    public void MovePlayerLeftStart()
     {
-        
-        if (!isGrounded) isGrounded = Physics2D.OverlapCircle(groundCheck.position, collisionDetectorRadius, groundlayer);
+        isUsingTouchInput = true;
+        h = -1;
+    }
+    public void MovePlayerRightStart()
+    {
+        isUsingTouchInput = true;
+        h = 1;
+    }
+    public void StopPlayerHorizontal()
+    {
+        isUsingTouchInput = false;
+        h = 0;
+    }
+
+    public void JumpPlayer(int v)
+    {
+        isGrounded = ValidLayerCheck();
         if (v != 0 && isGrounded)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpforce, 0);
             isGrounded = false;
         }
+    }
+
+    private bool ValidLayerCheck()
+    {
+        return Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, groundlayer) 
+                || Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, MovableLayer)
+                || Physics2D.OverlapCircle(transform.position - new Vector3(0f, bottomOffset), collisionDetectorRadius, OtherPlayerLayer);
     }
 
     void RotatePlayer()

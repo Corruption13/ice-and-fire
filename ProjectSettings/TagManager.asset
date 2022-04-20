@@ -16,6 +16,7 @@ TagManager:
   - GenerateShadowCasters
   - IceTrophy
   - FireTrophy
+  - Movable
   layers:
   - Default
   - TransparentFX
