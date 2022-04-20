@@ -19,7 +19,7 @@ public class deathScript : MonoBehaviour
         if (col.gameObject.tag == trap1tag || col.gameObject.tag == trap2tag)
         {
             gameObject.SetActive(false);
-            levelstate.bothAlive = false;
+            levelstate.PlayerKilled();
         }
     }
 }

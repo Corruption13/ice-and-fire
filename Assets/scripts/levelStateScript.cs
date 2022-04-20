@@ -74,25 +74,34 @@ public class levelStateScript : MonoBehaviour
             StartCoroutine( DeathSteps() );
 
         if (fireHasCompletedLevel && iceHasCompletedLevel)
-            StartCoroutine( EndGameSteps() );
-        
+            WinGame();
+
+
     }
 
-    IEnumerator EndGameSteps() {
-
-
+    void WinGame()
+    {
         SetFinalScore();
         sfxAudioSource.PlayAudio(13);
         Debug.Log("You Win!");
+        StartCoroutine(EndGameSteps());
+    }
+
+    IEnumerator EndGameSteps() {
         yield return new WaitForSeconds(victory_delay);
         SceneManager.LoadScene("level_completed");
     }
 
+    public void PlayerKilled()
+    {
+        bothAlive = false;
+        sfxAudioSource.PlayAudio(12);
+
+    }
     IEnumerator DeathSteps()
     {
         Time.timeScale = 0.7f;
         Debug.Log("You Died.");
-        sfxAudioSource.PlayAudio(12);
         yield return new WaitForSeconds(death_delay);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

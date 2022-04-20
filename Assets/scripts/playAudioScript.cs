@@ -6,11 +6,12 @@ public class playAudioScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
+    public bool allowOverlapAudio = false; 
 
     // Update is called once per frame
     public void PlayAudio(int index)
     {
-        if(!checkIfAudioAlreadyPlaying())
+        if(allowOverlapAudio || !checkIfAudioAlreadyPlaying())
             audioSource.PlayOneShot(getClipByIndex(index));
     }
 
