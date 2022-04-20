@@ -6,7 +6,7 @@ public class victoryScript : MonoBehaviour
 {
     public bool isplayer1;
     public Transform groundCheck;
-    public LayerMask finishLayer;
+    public string TrophyTag; 
     private levelStateScript levelstate;
 
     void Start()
@@ -14,14 +14,17 @@ public class victoryScript : MonoBehaviour
         levelstate = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<levelStateScript>();
     }
 
-    void FixedUpdate()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (Physics2D.OverlapCircle(groundCheck.position, 0.5f, finishLayer))
+        
+        if (col.gameObject.CompareTag(TrophyTag))
         {
-            if(isplayer1)
+            Destroy(col.gameObject);
+            if (isplayer1)
                 levelstate.iceHasCompletedLevel = true;
             else
                 levelstate.fireHasCompletedLevel = true;
         }
     }
+
 }

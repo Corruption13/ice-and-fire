@@ -7930,8 +7930,8 @@ Tilemap:
   - first: {x: 8, y: 17, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 6
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10829,15 +10829,15 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 58fdb9dd504cbb942ab778561d132e8f, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 29
     m_Data: {fileID: 11400000, guid: 727e956114bf72c41a521060d83981b3, type: 2}
   - m_RefCount: 280
     m_Data: {fileID: 11400000, guid: 763f53e533808b34ba3007afe63c0dc1, type: 2}
-  - m_RefCount: 480
+  - m_RefCount: 481
     m_Data: {fileID: 11400000, guid: 97d2ed538d52e4749a33108c8b613452, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -10852,12 +10852,12 @@ Tilemap:
     m_Data: {fileID: 1823840780, guid: 481472cb43a307240a8427916b1cf37a, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 480
+  - m_RefCount: 481
     m_Data: {fileID: 1166034886, guid: 481472cb43a307240a8427916b1cf37a, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 348c3b734b11d3b4aa5c69e25b7113e6, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 790
     m_Data:
@@ -16737,7 +16737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3409656194923226042, guid: 3dd8205e5894e5d488f71e976cb4edc2, type: 3}
       propertyPath: cameraYOffset
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3409656194923226042, guid: 3dd8205e5894e5d488f71e976cb4edc2, type: 3}
       propertyPath: maxOrthographicSize
@@ -16877,6 +16877,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4805737053962728181, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
+      propertyPath: TrophyTag
+      value: IceTrophy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737054290860254, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
+      propertyPath: TrophyTag
+      value: FireTrophy
+      objectReference: {fileID: 0}
     - target: {fileID: 4805737054975589314, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -17074,7 +17082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403394467931623477, guid: bc1533ab1697a474da0cedd464f7d386, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.46
+      value: 0.27
       objectReference: {fileID: 0}
     - target: {fileID: 8403394467931623477, guid: bc1533ab1697a474da0cedd464f7d386, type: 3}
       propertyPath: m_LocalPosition.z
