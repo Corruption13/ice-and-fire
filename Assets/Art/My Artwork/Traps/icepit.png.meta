@@ -128,169 +128,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New Piskel (3)_0
+      name: icepit_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 56
+        y: 57
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8571f2196e6ffb9e0800000000000000
-      internalID: -1603291472181913768
+      spriteID: 214635d6bd0f45d47b74888d1212e4ea
+      internalID: -1520150813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_1
+      name: icepit_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 49
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5b11a97f570af710800000000000000
-      internalID: 1727701513693895514
+      spriteID: 2d5f9b9fb1318f944a0b50e5e8fc8729
+      internalID: -228820981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_2
+      name: icepit_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
+        y: 41
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e77a216270fc8f50800000000000000
-      internalID: 6885142304389756897
+      spriteID: d02d1b81b54e92942ae55fa734580fb7
+      internalID: -1710061557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_3
+      name: icepit_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 33
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f15a978896a699c0800000000000000
-      internalID: -3920763251539160592
+      spriteID: 54d1e184eead6e041a7f4ccd8b5222ca
+      internalID: -366378078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_4
+      name: icepit_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
+        y: 25
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 787d59433a6db78e0800000000000000
-      internalID: -1694524838324611193
+      spriteID: 34e85c7b1b138c84eac23a4946325e86
+      internalID: 959995476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_5
+      name: icepit_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 17
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5088bf35de09ece00800000000000000
-      internalID: 1066949510724028421
+      spriteID: df48d9ca3b74ee34090e15850932eb19
+      internalID: -1621997990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_6
+      name: icepit_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
+        y: 9
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28659a1d481c07310800000000000000
-      internalID: 1400832260309603970
+      spriteID: 43e9cce82e3525f43a8377e6e6f9c476
+      internalID: -766228057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New Piskel (3)_7
+      name: icepit_7
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1
         width: 64
-        height: 8
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f6c013a78ee849c0800000000000000
-      internalID: -3942639207439087887
+      spriteID: acb20c62118feee47b223bb760af221e
+      internalID: -1204867066
       vertices: []
       indices: 
       edges: []
@@ -306,14 +306,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      New Piskel (3)_1: 1727701513693895514
-      New Piskel (3)_3: -3920763251539160592
-      New Piskel (3)_0: -1603291472181913768
-      New Piskel (3)_5: 1066949510724028421
-      New Piskel (3)_2: 6885142304389756897
-      New Piskel (3)_6: 1400832260309603970
-      New Piskel (3)_7: -3942639207439087887
-      New Piskel (3)_4: -1694524838324611193
+      icepit_1: -228820981
+      icepit_0: -1520150813
+      icepit_2: -1710061557
+      icepit_3: -366378078
+      icepit_7: -1204867066
+      icepit_4: 959995476
+      icepit_5: -1621997990
+      icepit_6: -766228057
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

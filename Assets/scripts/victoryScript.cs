@@ -7,7 +7,12 @@ public class victoryScript : MonoBehaviour
     public bool isplayer1;
     public Transform groundCheck;
     public LayerMask finishLayer;
-    public levelStateScript levelstate; 
+    private levelStateScript levelstate;
+
+    void Start()
+    {
+        levelstate = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<levelStateScript>();
+    }
 
     void FixedUpdate()
     {

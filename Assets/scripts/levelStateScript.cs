@@ -6,29 +6,40 @@ using UnityEngine.UI;
 public class levelStateScript : MonoBehaviour
 {
 
+    [Header("Players")]
+    public GameObject firePlayer;
+    public GameObject iceplayer;
+
+    [Header("UI Elements")]
     public Text score;
     public Text timer;
     public Text levelInfo;
 
+    [Header("Level Gem Count ")]
+    public int fireGemsTotal = 1;
+    public int iceGemsTotal = 1;
+    public int acidGemsTotal = 1;
+    private int fireGemsCollected = 0;
+    private int iceGemsCollected = 0;
+    private int acidGemsCollected = 0;
+
+    [Header("Level Time Limit")]
     public float best_time_for_level = 30f;
     public float average_time_for_level = 60f;
     private float time_passed = 0f;
 
-    public GameObject firePlayer;
-    public GameObject iceplayer;
+    [Header("Time Delays")]
     public float victory_delay = 1f;
     public float death_delay = 0.5f;
+
+
+
+    [Header("Game Status")]
     public bool fireHasCompletedLevel = false;
     public bool iceHasCompletedLevel = false; 
     public bool bothAlive = true;
 
-    public int fireGemsTotal = 1;
-    public int iceGemsTotal = 1;
-    public int acidGemsTotal = 1;
 
-    private int fireGemsCollected = 0;
-    private int iceGemsCollected = 0;
-    private int acidGemsCollected = 0;
 
     public playAudioScript sfxAudioSource;
 

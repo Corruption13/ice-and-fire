@@ -10,7 +10,7 @@ public class openDoorScript : MonoBehaviour
     private int objects_already_pressing_button = 0; 
 
 
-    void OnCollisionEnter2D()
+    void OnTriggerEnter2D()
     {
         objects_already_pressing_button += 1;
         if (objects_already_pressing_button == 1)
@@ -19,7 +19,7 @@ public class openDoorScript : MonoBehaviour
             animator.SetBool("isPressed", true);
         }
     }
-    void OnCollisionExit2D()
+    void OnTriggerExit2D()
     {
         objects_already_pressing_button -= 1;
         if (objects_already_pressing_button == 0)

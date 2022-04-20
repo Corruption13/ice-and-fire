@@ -7,8 +7,13 @@ public class collectGemScript : MonoBehaviour
 
     public string gem1Tag;
     public string gem2Tag = "AcidGem";
-    public levelStateScript levelstate;
-    public playAudioScript sfxAudioSource; 
+    public playAudioScript sfxAudioSource;
+
+    private levelStateScript levelstate;
+    void Start()
+    {
+        levelstate = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<levelStateScript>();
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
