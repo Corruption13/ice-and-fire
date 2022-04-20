@@ -16881,6 +16881,10 @@ PrefabInstance:
       propertyPath: TrophyTag
       value: IceTrophy
       objectReference: {fileID: 0}
+    - target: {fileID: 4805737054202576228, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 67b2c9de31a741c409c8e3fa5d05221a, type: 3}
     - target: {fileID: 4805737054290860254, guid: ba255f1a34d2ee140bf4598b42c21559, type: 3}
       propertyPath: TrophyTag
       value: FireTrophy
