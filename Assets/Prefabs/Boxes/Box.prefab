@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4889390433035831480}
   - component: {fileID: 4889390433035831481}
   - component: {fileID: 4889390433035831486}
-  m_Layer: 7
+  - component: {fileID: 1791025815}
+  m_Layer: 8
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Movable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,8 +101,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 13
   m_LinearDrag: 5
-  m_AngularDrag: 0.5
-  m_GravityScale: 5
+  m_AngularDrag: 50
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: c6305e44301616046bdbadbbb2f91c8a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -133,3 +134,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9891852, y: 0.963823}
   m_EdgeRadius: 0
+--- !u!114 &1791025815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4889390433035831487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.50000006, y: -0.5, z: 0}
+  - {x: -0.50000006, y: 0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 42008
