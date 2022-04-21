@@ -17,7 +17,6 @@ public class doorSlideScript : MonoBehaviour
     private float moveHorizontal = 0f;
     private float speed = 100f;
     private float time_left;
-    private float blocked_time = 0f;
     private int objects_already_pressing_button = 0;
 
     private void Start()
@@ -32,7 +31,6 @@ public class doorSlideScript : MonoBehaviour
         if (time_left > 0)
         {
             time_left -= Time.deltaTime;
-            Debug.Log(time_left);
             rb.velocity = new Vector2(moveHorizontal * Time.deltaTime * speed, moveVertical * Time.deltaTime* speed);
         }
         else

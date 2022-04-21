@@ -13,6 +13,10 @@ TagManager:
   - FireGem
   - AcidGem
   - Button
+  - GenerateShadowCasters
+  - IceTrophy
+  - FireTrophy
+  - Movable
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
+      <div><a href="../mobile">Click here for mobile version!</a></div>
       <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
@@ -58,9 +59,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/webbuild.loader.js";
       var config = {
-        dataUrl: buildUrl + "/webbuild.data.br",
-        frameworkUrl: buildUrl + "/webbuild.framework.js.br",
-        codeUrl: buildUrl + "/webbuild.wasm.br",
+        dataUrl: buildUrl + "/webbuild.data.unityweb",
+        frameworkUrl: buildUrl + "/webbuild.framework.js.unityweb",
+        codeUrl: buildUrl + "/webbuild.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Ice and Fire 1",
@@ -91,10 +92,25 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        unityShowBanner('Please go to /mobile link of this app instead of /webbuild');
+
+        var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+            unityInstance.SetFullscreen(1);
+          
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+        
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
+        unityShowBanner('Now Available on Mobile!');
         canvas.style.width = "960px";
         canvas.style.height = "600px";
       }
