@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro; 
 public class levelStateScript : MonoBehaviour
 {
 
@@ -11,9 +12,9 @@ public class levelStateScript : MonoBehaviour
     public GameObject iceplayer;
 
     [Header("UI Elements")]
-    public Text score;
-    public Text timer;
-    public Text levelInfo;
+    public TMP_Text score;
+    public TMP_Text timer;
+    public TMP_Text levelInfo;
 
     [Header("Level Gem Count ")]
     public int fireGemsTotal = 1;

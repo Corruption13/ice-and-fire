@@ -46,15 +46,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
       propertyPath: m_ShadowIntensity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
       propertyPath: m_FalloffIntensity
-      value: 0.4
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
       propertyPath: m_NormalMapQuality
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
       propertyPath: m_NormalMapDistance
@@ -69,8 +69,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
       propertyPath: m_ShadowVolumeIntensity
-      value: 1
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353567621, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7519794746075079381, guid: 368d087751d1d5d448f3bd4efbd9c56c, type: 3}
       propertyPath: m_Name
@@ -188,11 +196,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
       propertyPath: m_ShadowIntensity
-      value: 1
+      value: 0.351
       objectReference: {fileID: 0}
     - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
       propertyPath: m_FalloffIntensity
-      value: 0.4
+      value: 0.666
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
       propertyPath: m_NormalMapDistance
@@ -204,10 +216,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
       propertyPath: m_PointLightInnerRadius
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
       propertyPath: m_ShadowVolumeIntensity
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
+      propertyPath: m_LightVolumeIntensityEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4805737055320140114, guid: 9dd4ab4fd4937694d9a7662c58f61d38, type: 3}
+      propertyPath: m_ShadowVolumeIntensityEnabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -33,11 +33,13 @@ public class playerScript : MonoBehaviour
     private int h = 0;
     private int v = 0;
     private bool isGrounded;
+    private Vector2 overlapBoxSize;
 
 
     private void Start()
     {
         isGrounded = true;
+        overlapBoxSize = new Vector2(2* collisionDetectorRadius, 2*collisionDetectorRadius);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -75,7 +77,7 @@ public class playerScript : MonoBehaviour
             rb.velocity = new Vector2(horizontal * Time.deltaTime * speed, rb.velocity.y);
         if(horizontal == 0)
         {
-            if (!Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, MovableLayer))
+            if (!Physics2D.OverlapBox(transform.position, overlapBoxSize, 360f, MovableLayer))
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
@@ -111,9 +113,9 @@ public class playerScript : MonoBehaviour
 
     private bool ValidLayerCheck()
     {
-        return Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, groundlayer) 
-                || Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, MovableLayer)
-                || Physics2D.OverlapCircle(transform.position - new Vector3(0f, bottomOffset), collisionDetectorRadius, OtherPlayerLayer);
+        return Physics2D.OverlapBox(transform.position, overlapBoxSize, 360f, groundlayer) 
+                || Physics2D.OverlapBox(transform.position, overlapBoxSize, 360f, MovableLayer)
+                || Physics2D.OverlapBox(transform.position - new Vector3(0f, bottomOffset), overlapBoxSize, 360f, OtherPlayerLayer);
     }
 
     void RotatePlayer()
@@ -130,7 +132,7 @@ public class playerScript : MonoBehaviour
 
     void RightSideUpPlayer()
     {
-        if(rb.velocity.y < 0.1f && rb.velocity.x < 0.5f)
+        if(rb.velocity == Vector2.zero)
         {
             transform.localRotation = Quaternion.identity;
         }

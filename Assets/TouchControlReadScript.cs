@@ -7,7 +7,12 @@ public class TouchControlReadScript : MonoBehaviour
     // Start is called before the first frame update
     public playerScript player1;
     public playerScript player2;
+    public GameObject touchControls;
 
+    public void ToggleTouchControls()
+    {
+        touchControls.SetActive(!touchControls.activeSelf);
+    }
 
 
 
