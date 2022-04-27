@@ -89,4 +89,7 @@ public class doorSlideScript : MonoBehaviour
         rb.velocity = Vector2.zero; 
     }
 
+
+
+
 }

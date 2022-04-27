@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class loadSceneByName : MonoBehaviour
 {
-    public string scene_name="0"; 
+    public string scene_name="0";
+
+    void Start()
+    {
+
+    }
 
     public void LoadSceneByName()
     {
@@ -16,9 +21,19 @@ public class loadSceneByName : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid Scene Name Given"); 
+            Debug.LogError("Invalid Scene Name Given: " + scene_name); 
         }
+    }
 
-
+    public void LoadSceneByAttribute(string name)
+    {
+        if (Application.CanStreamedLevelBeLoaded(name))
+        {
+            SceneManager.LoadScene(name);
+        }
+        else
+        {
+            Debug.LogError("Invalid Scene Name Given: "+ name);
+        }
     }
 }
