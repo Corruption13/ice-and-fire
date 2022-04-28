@@ -29,18 +29,17 @@ public class playerScript : MonoBehaviour
     public LayerMask groundlayer;
     public LayerMask MovableLayer;
     public LayerMask OtherPlayerLayer;
+    public int maxJump = 1;
 
     private int h = 0;
     private int v = 0;
-    private bool isGrounded;
     private int jumpCount = 1;
-    private int maxJump = 1;
+    
     private Vector2 overlapBoxSize;
 
 
     private void Start()
     {
-        isGrounded = true;
         overlapBoxSize = new Vector2(2* collisionDetectorRadius, 2*collisionDetectorRadius);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();

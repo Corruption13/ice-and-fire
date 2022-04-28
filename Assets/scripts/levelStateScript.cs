@@ -57,40 +57,29 @@ public class levelStateScript : MonoBehaviour
     {
         time_passed += Time.deltaTime;
         UpdateTimerUI(); 
-
-
     }
 
-    void UpdateTimerUI()
-    {
-        timer.text = time_passed.ToString("0.00");
-    }
+
 
     void Update()
     {
-        EndGameCheck();
-    }
-
-    void EndGameCheck()
-    {
-        if(!bothAlive)
-            StartCoroutine( DeathSteps() );
+        if (!bothAlive)
+            StartCoroutine(DeathSteps());
 
         if (fireHasCompletedLevel && iceHasCompletedLevel)
             WinGame();
-
-
     }
+
 
     void WinGame()
     {
         SetFinalScore();
         sfxAudioSource.PlayAudio(13, false);
         Debug.Log("You Win!");
-        StartCoroutine(EndGameSteps());
+        StartCoroutine(WinGameSteps());
     }
 
-    IEnumerator EndGameSteps() {
+    IEnumerator WinGameSteps() {
         yield return new WaitForSeconds(victory_delay);
         SceneManager.LoadScene("level_completed");
     }
@@ -131,20 +120,14 @@ public class levelStateScript : MonoBehaviour
 
         
         int progress = PlayerPrefs.GetInt("level_progress");
-        if (progress >= int.Parse(currentLevel))
+        if (progress <= int.Parse(currentLevel))
         {
             PlayerPrefs.SetInt("level_progress", int.Parse(currentLevel) + 1);
         }
 
-        Debug.Log(grade);
-        Debug.Log(Array.FindIndex(gradeChart, x => x.Contains(grade)));
-
-        Debug.Log(PlayerPrefs.GetString("Lgrade" + currentLevel));
-        Debug.Log(Array.FindIndex(gradeChart, x => x.Contains(PlayerPrefs.GetString("Lgrade" + currentLevel))));
         if (PlayerPrefs.GetString("Lgrade" + currentLevel) == "" || Array.FindIndex(gradeChart, x => x.Contains(grade))
                             < Array.FindIndex(gradeChart,  x => x.Contains(PlayerPrefs.GetString("Lgrade" + currentLevel))))
         {
-            Debug.Log("yes");
             PlayerPrefs.SetString("Lgrade" + currentLevel.ToString(), grade); 
         }
         if(PlayerPrefs.GetFloat("Ltime" + currentLevel) == 0f || PlayerPrefs.GetFloat("Ltime"+ currentLevel) > time_taken)
@@ -152,10 +135,7 @@ public class levelStateScript : MonoBehaviour
             PlayerPrefs.SetFloat("Ltime" + currentLevel, time_taken);
             PlayerPrefs.SetInt("NewBestTime", 1); 
         }
-
-
         PlayerPrefs.Save();
-
     }
 
 
@@ -169,7 +149,7 @@ public class levelStateScript : MonoBehaviour
         score += 2*fireGemsCollected / fireGemsTotal + 2*iceGemsCollected/iceGemsTotal + 2*acidGemsCollected/ acidGemsTotal;
 
         if (time_taken < best_time_for_level) score += 2;
-        if (time_taken < average_time_for_level) score += 1;
+        else if (time_taken < average_time_for_level) score += 1;
 
         if(score >= 0 && score <=8 )
             return gradeChart[8 - (int)score];
@@ -202,6 +182,10 @@ public class levelStateScript : MonoBehaviour
         score.text = fireGemsCollected.ToString() + "     " 
                     + iceGemsCollected.ToString() + "     " 
                     + acidGemsCollected.ToString();
+    }
+    void UpdateTimerUI()
+    {
+        timer.text = time_passed.ToString("0.00");
     }
 
 }

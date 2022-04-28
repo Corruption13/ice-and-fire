@@ -38,9 +38,9 @@ public class LevelSelectScript : MonoBehaviour
             float time = PlayerPrefs.GetFloat("Ltime" + i.ToString());
             string grade = PlayerPrefs.GetString("Lgrade" + i.ToString());
 
-            childScripts[1].text = i.ToString();                                // Title
-            childScripts[1].text = time==0? "": time.ToString("0.00s") ;        // Time
-            childScripts[2].text = grade;                                       // Grade
+            childScripts[1].text = i.ToString();                                     // Title
+            childScripts[1].text = time==0? "": (time+2f).ToString("0.00s") ;        // Time
+            childScripts[2].text = grade;                                            // Grade
 
         }
 
