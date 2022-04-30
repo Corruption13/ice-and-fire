@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System;
 public class levelStateScript : MonoBehaviour
 {
+    readonly string[] gradeChart = { "O", "A+", "A", "B+", "B", "C+", "C", "D", "F" };
 
     [Header("Players")]
     public GameObject firePlayer;
     public GameObject iceplayer;
 
     [Header("UI Elements")]
-    public Text score;
-    public Text timer;
-    public Text levelInfo;
+    public TMP_Text score;
+    public TMP_Text timer;
+    public TMP_Text levelInfo;
 
     [Header("Level Gem Count ")]
     public int fireGemsTotal = 1;
@@ -54,40 +57,29 @@ public class levelStateScript : MonoBehaviour
     {
         time_passed += Time.deltaTime;
         UpdateTimerUI(); 
-
-
     }
 
-    void UpdateTimerUI()
-    {
-        timer.text = time_passed.ToString("0.00");
-    }
+
 
     void Update()
     {
-        EndGameCheck();
-    }
-
-    void EndGameCheck()
-    {
-        if(!bothAlive)
-            StartCoroutine( DeathSteps() );
+        if (!bothAlive)
+            StartCoroutine(DeathSteps());
 
         if (fireHasCompletedLevel && iceHasCompletedLevel)
             WinGame();
-
-
     }
+
 
     void WinGame()
     {
         SetFinalScore();
-        sfxAudioSource.PlayAudio(13);
+        sfxAudioSource.PlayAudio(13, false);
         Debug.Log("You Win!");
-        StartCoroutine(EndGameSteps());
+        StartCoroutine(WinGameSteps());
     }
 
-    IEnumerator EndGameSteps() {
+    IEnumerator WinGameSteps() {
         yield return new WaitForSeconds(victory_delay);
         SceneManager.LoadScene("level_completed");
     }
@@ -110,29 +102,58 @@ public class levelStateScript : MonoBehaviour
 
     void SetFinalScore()
     {
+        string currentLevel = SceneManager.GetActiveScene().name;
+        float time_taken = time_passed - victory_delay;
+
+        string grade = CalculateGrade(time_taken); 
         PlayerPrefs.SetInt("score1", fireGemsCollected);
         PlayerPrefs.SetInt("total1", fireGemsTotal);
         PlayerPrefs.SetInt("score2", iceGemsCollected);
         PlayerPrefs.SetInt("total2", iceGemsTotal);
         PlayerPrefs.SetInt("score3", acidGemsCollected);
         PlayerPrefs.SetInt("total3", acidGemsTotal);
-        PlayerPrefs.SetString("completed_level", SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetFloat("time_passed", time_passed - victory_delay);
-        PlayerPrefs.SetString("grade", CalculateGrade());
+        PlayerPrefs.SetString("completed_level", currentLevel);
+        PlayerPrefs.SetFloat("time_passed", time_taken);
+        PlayerPrefs.SetString("grade", grade);
+
+        // Save to player prefs:
+
+        
+        int progress = PlayerPrefs.GetInt("level_progress");
+        if (progress <= int.Parse(currentLevel))
+        {
+            PlayerPrefs.SetInt("level_progress", int.Parse(currentLevel) + 1);
+        }
+
+        if (PlayerPrefs.GetString("Lgrade" + currentLevel) == "" || Array.FindIndex(gradeChart, x => x.Contains(grade))
+                            < Array.FindIndex(gradeChart,  x => x.Contains(PlayerPrefs.GetString("Lgrade" + currentLevel))))
+        {
+            PlayerPrefs.SetString("Lgrade" + currentLevel.ToString(), grade); 
+        }
+        if(PlayerPrefs.GetFloat("Ltime" + currentLevel) == 0f || PlayerPrefs.GetFloat("Ltime"+ currentLevel) > time_taken)
+        {
+            PlayerPrefs.SetFloat("Ltime" + currentLevel, time_taken);
+            PlayerPrefs.SetInt("NewBestTime", 1); 
+        }
+        PlayerPrefs.Save();
     }
 
-    string CalculateGrade()
+
+
+
+
+    string CalculateGrade(float time_taken)
     {
-        string[] grade = {"O", "A+", "A", "B+", "B", "C+", "C", "D", "F"};
+        
         float score = 0;
         score += 2*fireGemsCollected / fireGemsTotal + 2*iceGemsCollected/iceGemsTotal + 2*acidGemsCollected/ acidGemsTotal;
 
-        if (time_passed < best_time_for_level) score += 2;
-        if (time_passed < average_time_for_level) score += 1;
+        if (time_taken < best_time_for_level) score += 2;
+        else if (time_taken < average_time_for_level) score += 1;
 
         if(score >= 0 && score <=8 )
-            return grade[8 - (int)score];
-        return "Invalid Grade"; 
+            return gradeChart[8 - (int)score];
+        return "G"; 
     }
 
     public void CollectGem(bool isIce)
@@ -146,12 +167,14 @@ public class levelStateScript : MonoBehaviour
             iceGemsCollected++;
         }
         UpdateScoreUI();
+        sfxAudioSource.PlayAudio(1);
     }
 
     public void CollectSpecialGem()
     {
         acidGemsCollected++;
         UpdateScoreUI();
+        sfxAudioSource.PlayAudio(0);
     }
 
     void UpdateScoreUI()
@@ -159,6 +182,10 @@ public class levelStateScript : MonoBehaviour
         score.text = fireGemsCollected.ToString() + "     " 
                     + iceGemsCollected.ToString() + "     " 
                     + acidGemsCollected.ToString();
+    }
+    void UpdateTimerUI()
+    {
+        timer.text = time_passed.ToString("0.00");
     }
 
 }

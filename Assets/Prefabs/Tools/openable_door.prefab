@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6793550318189836701}
   - component: {fileID: 6793550318189836700}
   - component: {fileID: 6793550318189836688}
+  - component: {fileID: 6949243532179964049}
   m_Layer: 8
   m_Name: openable_door
   m_TagString: Untagged
@@ -150,3 +151,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15026984, y: 1.1613462}
   m_EdgeRadius: 0
+--- !u!114 &6949243532179964049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6793550318189836703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.08000016, y: -0.64000034, z: 0}
+  - {x: -0.08000016, y: 0.6399994, z: 0}
+  - {x: 0.08000016, y: 0.6399994, z: 0}
+  - {x: 0.08000016, y: -0.64000034, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -322480

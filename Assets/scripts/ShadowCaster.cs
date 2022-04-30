@@ -18,6 +18,13 @@ public class ShadowCaster : MonoBehaviour
     static readonly FieldInfo meshField = typeof(ShadowCaster2D).GetField("m_Mesh", BindingFlags.NonPublic | BindingFlags.Instance);
     static readonly FieldInfo shapePathField = typeof(ShadowCaster2D).GetField("m_ShapePath", BindingFlags.NonPublic | BindingFlags.Instance);
 
+    private void Start()
+    {
+        if(PlayerPrefs.GetInt("shadows") == 0)
+        {
+            DestroyAllChildren();
+        }
+    }
     public void Generate()
     {
         DestroyAllChildren();
@@ -31,6 +38,7 @@ public class ShadowCaster : MonoBehaviour
             GameObject shadowCaster = new GameObject("shadow_caster_" + i);
             shadowCaster.transform.parent = gameObject.transform;
             UnityEngine.Rendering.Universal.ShadowCaster2D shadowCasterComponent = shadowCaster.AddComponent<UnityEngine.Rendering.Universal.ShadowCaster2D>();
+            shadowCaster.transform.position = tilemapCollider.transform.position;
             shadowCasterComponent.selfShadows = this.selfShadows;
 
             Vector3[] testPath = new Vector3[pathVertices.Length];

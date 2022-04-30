@@ -29,15 +29,18 @@ public class playerScript : MonoBehaviour
     public LayerMask groundlayer;
     public LayerMask MovableLayer;
     public LayerMask OtherPlayerLayer;
+    public int maxJump = 1;
 
     private int h = 0;
     private int v = 0;
-    private bool isGrounded;
+    private int jumpCount = 1;
+    
+    private Vector2 overlapBoxSize;
 
 
     private void Start()
     {
-        isGrounded = true;
+        overlapBoxSize = new Vector2(2* collisionDetectorRadius, 2*collisionDetectorRadius);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,36 +54,24 @@ public class playerScript : MonoBehaviour
         AnimatePlayer();
         RotatePlayer();
         RightSideUpPlayer();
-        
+        if (jumpCount != maxJump && ValidLayerCheck()) jumpCount = maxJump;
+
     }
 
     void FixedUpdate()
     {
-       
         MovePlayerHorizontal(h);
         if(v!=0)
             JumpPlayer(v);
     }
 
-
+    /* Controls Section 
+     * 
+     */
     void GetInput()
     {
         v = Input.GetKey(jumpkey) ? 1 : 0;
         h = Input.GetKey(rightkey) ? 1 : Input.GetKey(leftkey) ? -1 : 0;
-    }
-
-    void MovePlayerHorizontal(int horizontal)
-    {
-        if(horizontal != 0)
-            rb.velocity = new Vector2(horizontal * Time.deltaTime * speed, rb.velocity.y);
-        if(horizontal == 0)
-        {
-            if (!Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, MovableLayer))
-            {
-                rb.velocity = new Vector2(0, rb.velocity.y);
-            }
-        }
-        
     }
 
     public void MovePlayerLeftStart()
@@ -99,20 +90,40 @@ public class playerScript : MonoBehaviour
         h = 0;
     }
 
+
+    /* Motion Functions Section 
+    * 
+    */
+    void MovePlayerHorizontal(int horizontal)
+    {
+        if(horizontal != 0)
+            rb.velocity = new Vector2(horizontal * Time.deltaTime * speed, rb.velocity.y);
+        if(horizontal == 0)
+        {
+            if (!Physics2D.OverlapBox(transform.position, overlapBoxSize, 360f, MovableLayer))
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+        }
+        
+    }
+
     public void JumpPlayer(int v)
     {
-        isGrounded = ValidLayerCheck();
-        if (v != 0 && isGrounded)
+        
+        
+        if (jumpCount > 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpforce, 0);
-            isGrounded = false;
+            jumpCount--;
         }
+
     }
 
     private bool ValidLayerCheck()
     {
-        return Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, groundlayer) 
-                || Physics2D.OverlapCircle(transform.position, collisionDetectorRadius, MovableLayer)
+        return Physics2D.OverlapBox(transform.position, overlapBoxSize, 180f, groundlayer) 
+                || Physics2D.OverlapCircle(transform.position - new Vector3(0f, bottomOffset), collisionDetectorRadius, MovableLayer)
                 || Physics2D.OverlapCircle(transform.position - new Vector3(0f, bottomOffset), collisionDetectorRadius, OtherPlayerLayer);
     }
 
@@ -130,7 +141,8 @@ public class playerScript : MonoBehaviour
 
     void RightSideUpPlayer()
     {
-        if(rb.velocity.y < 0.1f && rb.velocity.x < 0.5f)
+        
+        if(rb.velocity == Vector2.zero)
         {
             transform.localRotation = Quaternion.identity;
         }

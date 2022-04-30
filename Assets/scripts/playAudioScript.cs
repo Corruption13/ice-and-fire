@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class playAudioScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
-    public bool allowOverlapAudio = false; 
+
+    private void Start()
+    {
+        audioSource.volume = 100f - PlayerPrefs.GetFloat("avolume"); 
+    }
 
     // Update is called once per frame
-    public void PlayAudio(int index)
+    public void PlayAudio(int index, bool allowOverlapAudio = true)
     {
         if(allowOverlapAudio || !checkIfAudioAlreadyPlaying())
             audioSource.PlayOneShot(getClipByIndex(index));
@@ -22,5 +26,11 @@ public class playAudioScript : MonoBehaviour
     private AudioClip getClipByIndex(int index)
     {
         return audioClipArray[index];
+    }
+
+    public void SliderAudioAdjust(Slider s)
+    {
+        audioSource.volume = s.value;
+        PlayerPrefs.SetFloat("avolume", 100 - s.value); // 0 if not defined. so make it 100 if muted.
     }
 }
