@@ -124,7 +124,7 @@ public class playerScript : MonoBehaviour
     {
         return Physics2D.OverlapBox(transform.position, overlapBoxSize, 180f, groundlayer) 
                 || Physics2D.OverlapCircle(transform.position - new Vector3(0f, bottomOffset), collisionDetectorRadius, MovableLayer)
-                || Physics2D.OverlapCircle(transform.position - new Vector3(0f, bottomOffset), collisionDetectorRadius, OtherPlayerLayer);
+                || Physics2D.OverlapBox(transform.position - new Vector3(0f, bottomOffset), overlapBoxSize*0.75f, 180f, OtherPlayerLayer);
     }
 
     void RotatePlayer()
