@@ -1786,9 +1786,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Animator:</b> Sandeep Pillai\n<b>Coder</b> Sandeep Pillai\n<b>Level
-    Designer</b>: Also Sandeep Pillai\n\n<b>Play Testers</b>: \n\t+ Akhil PV [Inconsistant]\n\t+
-    Kevin Mark [Logia]\n\t+ Gouri [Gee]\n\n<b>Inspiration</b>: \n\t+ Gayatri R\n\t+
+  m_text: "<b>Animator:</b> Sandeep Pillai\n<b>Coder:</b> Sandeep Pillai\n<b>Level
+    Designer:</b> Also Sandeep Pillai\n\n<b>Play Testers</b>: \n\t+ Akhil PV [Inconsistant]\n\t+
+    Kevin Mark [Logia]\n\t+ Gowri [Gee]\n\n<b>Inspiration</b>: \n\t+ Gayatri R\n\t+
     Oslo Albet (F&B)\n\t+ Van Gogh <3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
