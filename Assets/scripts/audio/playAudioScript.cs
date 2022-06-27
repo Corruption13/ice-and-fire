@@ -9,7 +9,7 @@ public class playAudioScript : MonoBehaviour
 
     private void Start()
     {
-        audioSource.volume = 100f - PlayerPrefs.GetFloat("avolume"); 
+        audioSource.volume = Mathf.Clamp( 100f - PlayerPrefs.GetFloat("avolume" + gameObject.name), 0, 100); 
     }
 
     // Update is called once per frame
@@ -31,6 +31,6 @@ public class playAudioScript : MonoBehaviour
     public void SliderAudioAdjust(Slider s)
     {
         audioSource.volume = s.value;
-        PlayerPrefs.SetFloat("avolume", 100 - s.value); // 0 if not defined. so make it 100 if muted.
+        PlayerPrefs.SetFloat("avolume" + gameObject.name, 100 - s.value); // 0 if not defined. so make it 100 if muted.
     }
 }

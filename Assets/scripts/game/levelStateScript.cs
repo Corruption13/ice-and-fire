@@ -30,6 +30,7 @@ public class levelStateScript : MonoBehaviour
     public float best_time_for_level = 30f;
     public float average_time_for_level = 60f;
     private float time_passed = 0f;
+    private bool gameTimerPaused = true;
 
     [Header("Time Delays")]
     public float victory_delay = 1f;
@@ -55,8 +56,11 @@ public class levelStateScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        time_passed += Time.deltaTime;
-        UpdateTimerUI(); 
+        if (!gameTimerPaused)
+        {
+            time_passed += Time.deltaTime;
+            UpdateTimerUI();
+        }
     }
 
 
@@ -70,9 +74,14 @@ public class levelStateScript : MonoBehaviour
             WinGame();
     }
 
+    public void StartGameTimer()
+    {
+        gameTimerPaused = false;
+    }
 
     void WinGame()
     {
+        gameTimerPaused = true;
         SetFinalScore();
         sfxAudioSource.PlayAudio(13, false);
         Debug.Log("You Win!");
@@ -86,6 +95,7 @@ public class levelStateScript : MonoBehaviour
 
     public void PlayerKilled()
     {
+        gameTimerPaused = true;
         bothAlive = false;
         sfxAudioSource.PlayAudio(12);
 
@@ -103,9 +113,8 @@ public class levelStateScript : MonoBehaviour
     void SetFinalScore()
     {
         string currentLevel = SceneManager.GetActiveScene().name;
-        float time_taken = time_passed - victory_delay;
 
-        string grade = CalculateGrade(time_taken); 
+        string grade = CalculateGrade(); 
         PlayerPrefs.SetInt("score1", fireGemsCollected);
         PlayerPrefs.SetInt("total1", fireGemsTotal);
         PlayerPrefs.SetInt("score2", iceGemsCollected);
@@ -113,7 +122,7 @@ public class levelStateScript : MonoBehaviour
         PlayerPrefs.SetInt("score3", acidGemsCollected);
         PlayerPrefs.SetInt("total3", acidGemsTotal);
         PlayerPrefs.SetString("completed_level", currentLevel);
-        PlayerPrefs.SetFloat("time_passed", time_taken);
+        PlayerPrefs.SetFloat("time_passed", time_passed);
         PlayerPrefs.SetString("grade", grade);
 
         // Save to player prefs:
@@ -128,13 +137,21 @@ public class levelStateScript : MonoBehaviour
         if (PlayerPrefs.GetString("Lgrade" + currentLevel) == "" || Array.FindIndex(gradeChart, x => x.Contains(grade))
                             < Array.FindIndex(gradeChart,  x => x.Contains(PlayerPrefs.GetString("Lgrade" + currentLevel))))
         {
-            PlayerPrefs.SetString("Lgrade" + currentLevel.ToString(), grade); 
+            PlayerPrefs.SetString("Lgrade" + currentLevel.ToString(), grade);
+            PlayerPrefs.SetFloat("Ltime" + currentLevel, time_passed);
+            
         }
-        if(PlayerPrefs.GetFloat("Ltime" + currentLevel) == 0f || PlayerPrefs.GetFloat("Ltime"+ currentLevel) > time_taken)
+        if (PlayerPrefs.GetFloat("LtimeAny" + currentLevel) == 0f || PlayerPrefs.GetFloat("LtimeAny" + currentLevel) > time_passed)
         {
-            PlayerPrefs.SetFloat("Ltime" + currentLevel, time_taken);
-            PlayerPrefs.SetInt("NewBestTime", 1); 
+            PlayerPrefs.SetFloat("LtimeAny" + currentLevel, time_passed);
+            PlayerPrefs.SetString("LgradeAny" + currentLevel, grade);
+            PlayerPrefs.SetInt("NewBestTime", 1);
         }
+        else
+        {
+            PlayerPrefs.SetInt("NewBestTime", 0);
+        }
+
         PlayerPrefs.Save();
     }
 
@@ -142,14 +159,14 @@ public class levelStateScript : MonoBehaviour
 
 
 
-    string CalculateGrade(float time_taken)
+    string CalculateGrade()
     {
         
         float score = 0;
         score += 2*fireGemsCollected / fireGemsTotal + 2*iceGemsCollected/iceGemsTotal + 2*acidGemsCollected/ acidGemsTotal;
 
-        if (time_taken < best_time_for_level) score += 2;
-        else if (time_taken < average_time_for_level) score += 1;
+        if (time_passed < best_time_for_level) score += 2;
+        else if (time_passed < average_time_for_level) score += 1;
 
         if(score >= 0 && score <=8 )
             return gradeChart[8 - (int)score];

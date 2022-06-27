@@ -35,13 +35,16 @@ public class LevelSelectScript : MonoBehaviour
         for(int i = 0; i < levelTiles.Length; i++)
         {
             TMP_Text[] childScripts = levelTiles[i].GetComponentsInChildren<TMP_Text>();
-            float time = PlayerPrefs.GetFloat("Ltime" + i.ToString());
+            float grade_time = PlayerPrefs.GetFloat("Ltime" + i.ToString());
             string grade = PlayerPrefs.GetString("Lgrade" + i.ToString());
+            string best_time_grade = PlayerPrefs.GetString("LgradeAny" + i.ToString());
+            float best_time = PlayerPrefs.GetFloat("LtimeAny" + i.ToString());
 
-            childScripts[1].text = i.ToString();                                     // Title
-            childScripts[1].text = time==0? "": (time+2f).ToString("0.00s") ;        // Time
+            childScripts[0].text = (i+1).ToString();                                     // Title
+            childScripts[1].text = grade_time == 0? "": (grade_time).ToString("0.00s") ;        // Time
             childScripts[2].text = grade;                                            // Grade
-
+            childScripts[3].text = best_time == 0 ? "" : (best_time).ToString("0.00s");
+            childScripts[4].text = best_time_grade;
         }
 
     }
@@ -73,6 +76,7 @@ public class LevelSelectScript : MonoBehaviour
         else
         {
             Debug.Log("Invalid Scene: " + scene_name);
+            SceneManager.LoadScene("end");
         }
 
 

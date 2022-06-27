@@ -9,4 +9,12 @@ public class restartGameScript : MonoBehaviour
     {
       SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            RestartLevel();
+        }
+    }
 }

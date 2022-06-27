@@ -6,7 +6,6 @@ public class openDoorScript : MonoBehaviour
 {
     public doorSlideScript doorscript; 
     public Animator animator;
-
     private int objects_already_pressing_button = 0; 
 
 

@@ -12,8 +12,9 @@ public class displayPreviousLevelScore : MonoBehaviour
     public TextMeshProUGUI acidgems;
     public TextMeshProUGUI level_no;
     public TextMeshProUGUI grade;
-    public TextMeshProUGUI timer; 
- 
+    public TextMeshProUGUI timer;
+    public TextMeshProUGUI best_time_alert;
+
     void Start()
     {
         icegems.text = PlayerPrefs.GetInt("score1").ToString() + "/" + PlayerPrefs.GetInt("total1").ToString();
@@ -23,7 +24,8 @@ public class displayPreviousLevelScore : MonoBehaviour
         grade.text = PlayerPrefs.GetString("grade");
         timer.text = PlayerPrefs.GetFloat("time_passed").ToString("0.00") + " s";
 
-
+        if(PlayerPrefs.GetInt("NewBestTime") == 1)
+            best_time_alert.text = "NEW PERSONAL BEST TIME!"; 
     }
 
     /*
