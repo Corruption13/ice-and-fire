@@ -6,7 +6,14 @@
     <title>Unity WebGL Player | Ice and Fire 1</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+
+
   </head>
+  <a style="z-index:10; color: gold; text-decoration: none; position: fixed ; bottom:0px; left:45%; background-color: black; padding:10px;" href="https://corruption13.github.io/">Link to My Website</a>
+  <div id="unity-webgl-logo" style="position: fixed; bottom: 0px; z-index: 10;"></div>
+  <div id="unity-fullscreen" style="position: fixed; right:0px; bottom: 0px; z-index: 10; background-color: grey; padding:10px;">Click here for Fullscreen</div>
+  <!--<div id="unity-build-title" style="color: purple; text-align: center; position: fixed; left:47%; top: 0px; z-index: 10; background-color: black; padding:10px;">Ice and Fire</div> -->
+
   <body style="background-color: #030303; color: snow;">
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" style="border: 10px solid rgb(7, 7, 7);" width=1280 height=768></canvas>
@@ -17,12 +24,10 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <a style="color: gold; text-decoration: none;" href="https://corruption13.github.io/">My Website</a>
+      
       <div id="unity-footer">
         
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Ice and Fire 1</div>
+
         
       </div>
     </div>
@@ -31,7 +36,7 @@
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var fullscreenButton = document.querySelector("#unity-fullscreen");
       var warningBanner = document.querySelector("#unity-warning");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
@@ -46,8 +51,9 @@
         }
         var div = document.createElement('div');
         div.innerHTML = msg;
+        div.style="background:black;; padding:100px; border: 10px solid grey;";
         warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
+        if (type == 'error') div.style = 'background: red; padding: 10px;  colo';
         else {
           if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
           setTimeout(function() {
@@ -94,10 +100,11 @@
         canvas.style.width = window.innerWidth + 'px';
         canvas.style.height = window.innerHeight + 'px';
 
-        unityShowBanner('WebGL builds are not supported on mobile devices.');
+        unityShowBanner('USE PHONE IN LANDSCAPE MODE. RELOAD PAGE IF THINKS LOOK WEIRD.');
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
+        unityShowBanner('Go fullscreen using the button to the bottom right of the webpage, if things dont quite fit your screen. Have fun :)');
         canvas.style.width = "1280px";
         canvas.style.height = "768px";
       }
